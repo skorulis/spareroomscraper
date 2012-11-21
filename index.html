@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style type="text/css">
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map_canvas { height: 100% }
+</style>
+<script type="text/javascript"
+    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAapOP2ayy09k8p35zalXx62qafhel0At8&sensor=true">
+</script>
+<script type="text/javascript">
+	var map;
+  function initialize() {
+    var latlng = new google.maps.LatLng(51.50788400951119,-0.1368303833007758);
+    var myOptions = {
+      zoom: 13,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	var markers = new Array();
+	var data = [{"t":"Stamford Hill / South Tottenham (N15)","c":1643,"pc":"N15","single":107,"double":121,"lat":51.5833519,"lng":-0.07649299999999999},{"t":"Upper Holloway (N19)","c":1647,"pc":"N19","single":117,"double":146,"lat":51.5648883,"lng":-0.1323808},{"t":"Bloomsbury / High Holborn (WC1)","c":2729,"pc":"WC1","single":172,"double":199,"lat":51.51833999999999,"lng":-0.11916},{"t":"Dalston (E8)","c":761,"pc":"E8","single":114,"double":147,"lat":51.5412774,"lng":-0.0646194},{"t":"Bermondsey / Rotherhithe (SE16)","c":2277,"pc":"SE16","single":116,"double":157,"lat":51.4992331,"lng":-0.0410495},{"t":"Willesden (NW10)","c":1827,"pc":"NW10","single":103,"double":136,"lat":51.54102289999999,"lng":-0.2530945},{"t":"Penge (SE20)","c":2282,"pc":"SE20","single":-1,"double":102,"lat":51.4125706,"lng":-0.0613966},{"t":"Notting Hill (W11)","c":2699,"pc":"W11","single":165,"double":196,"lat":51.5121945,"lng":-0.2086389},{"t":"Leytonstone (E11)","c":746,"pc":"E11","single":92,"double":115,"lat":51.5728525,"lng":0.0176348},{"t":"Shoreditch / Whitechapel (E1)","c":744,"pc":"E1","single":111,"double":152,"lat":51.5176228,"lng":-0.0557553},{"t":"Clapton (E5)","c":757,"pc":"E5","single":97,"double":134,"lat":51.55969200000001,"lng":-0.0499585},{"t":"East Ham (E6)","c":758,"pc":"E6","single":78,"double":102,"lat":51.5202466,"lng":0.0645707},{"t":"Holloway (N7)","c":1656,"pc":"N7","single":170,"double":165,"lat":51.554381,"lng":-0.1205535},{"t":"Homerton (E9)","c":762,"pc":"E9","single":124,"double":138,"lat":51.54391829999999,"lng":-0.0381773},{"t":"Greenwich (SE10)","c":2271,"pc":"SE10","single":97,"double":141,"lat":51.4808496,"lng":-0.002929},{"t":"Forest Hill (SE23)","c":2285,"pc":"SE23","single":98,"double":115,"lat":51.4440733,"lng":-0.049752},{"t":"Wandsworth Town / Earlsfield (SW18)","c":2465,"pc":"SW18","single":115,"double":144,"lat":51.4465501,"lng":-0.193461},{"t":"Tooting (SW17)","c":2464,"pc":"SW17","single":96,"double":127,"lat":51.4334645,"lng":-0.1669558},{"t":"Winchmore Hill (N21)","c":1650,"pc":"N21","single":90,"double":125,"lat":51.6359737,"lng":-0.1002426},{"t":"Walthamstow (E17)","c":752,"pc":"E17","single":83,"double":110,"lat":51.5833731,"lng":-0.029406},{"t":"Acton (W3)","c":2704,"pc":"W3","single":105,"double":137,"lat":51.5094267,"lng":-0.2763927},{"t":"Finsbury Park (N4)","c":1653,"pc":"N4","single":112,"double":140,"lat":51.5728114,"lng":-0.1000159},{"t":"Bow (E3)","c":755,"pc":"E3","single":110,"double":139,"lat":51.53077529999999,"lng":-0.0293506},{"t":"London Bridge / Borough / Waterloo (SE1)","c":2270,"pc":"SE1","single":119,"double":174,"lat":51.49920729999999,"lng":-0.08800609999999999},{"t":"Aldersgate / Finsbury / Holborn (EC1)","c":763,"pc":"EC1","single":144,"double":182,"lat":51.5157,"lng":-0.09969},{"t":"Brixton (SW2)","c":2467,"pc":"SW2","single":105,"double":132,"lat":51.4466449,"lng":-0.1230218},{"t":"Lewisham (SE13)","c":2274,"pc":"SE13","single":94,"double":118,"lat":51.457212,"lng":-0.0058533},{"t":"Canary Wharf / Docklands (E14)","c":749,"pc":"E14","single":109,"double":155,"lat":51.5097502,"lng":-0.017595},{"t":"Cricklewood / Dollis Hill (NW2)","c":1829,"pc":"NW2","single":114,"double":143,"lat":51.5621085,"lng":-0.2296683},{"t":"Plumstead / Woolwich (SE18)","c":2279,"pc":"SE18","single":80,"double":103,"lat":51.47819819999999,"lng":0.07620529999999999},{"t":"Deptford (SE8)","c":2296,"pc":"SE8","single":108,"double":144,"lat":51.4808467,"lng":-0.0263676},{"t":"Highgate (N6)","c":1655,"pc":"N6","single":145,"double":162,"lat":51.5753887,"lng":-0.1501155},{"t":"Charlton (SE7)","c":2295,"pc":"SE7","single":58,"double":110,"lat":51.4887271,"lng":0.0293065},{"t":"Streatham (SW16)","c":2463,"pc":"SW16","single":96,"double":125,"lat":51.420389,"lng":-0.1287668},{"t":"Sydenham (SE26)","c":2288,"pc":"SE26","single":-1,"double":109,"lat":51.42832019999999,"lng":-0.0555772},{"t":"Camden (NW1)","c":1826,"pc":"NW1","single":138,"double":191,"lat":51.5306872,"lng":-0.146932},{"t":"Norwood (SE25)","c":2287,"pc":"SE25","single":88,"double":103,"lat":51.396821,"lng":-0.0730589},{"t":"North Kensington (W10)","c":2698,"pc":"W10","single":126,"double":164,"lat":51.52269709999999,"lng":-0.2146099},{"t":"Hammersmith (W6)","c":2707,"pc":"W6","single":134,"double":166,"lat":51.4911405,"lng":-0.2261411},{"t":"Golders Green (NW11)","c":1828,"pc":"NW11","single":113,"double":141,"lat":51.5832162,"lng":-0.1944106},{"t":"New Southgate (N11)","c":1639,"pc":"N11","single":103,"double":127,"lat":51.6148633,"lng":-0.147376},{"t":"Bayswater / Paddington (W2)","c":2703,"pc":"W2","single":128,"double":211,"lat":51.5096281,"lng":-0.1703541},{"t":"Camberwell (SE5)","c":2293,"pc":"SE5","single":92,"double":132,"lat":51.475561,"lng":-0.0908654},{"t":"Leyton (E10)","c":745,"pc":"E10","single":88,"double":110,"lat":51.5623313,"lng":-0.0176282},{"t":"Clapham (SW4)","c":2470,"pc":"SW4","single":114,"double":152,"lat":51.4597574,"lng":-0.137753},{"t":"Colindale (NW9)","c":1836,"pc":"NW9","single":87,"double":118,"lat":51.5831038,"lng":-0.2534766},{"t":"Tottenham (N17)","c":1645,"pc":"N17","single":110,"double":119,"lat":51.5965133,"lng":-0.06769259999999999},{"t":"Bethnal Green (E2)","c":754,"pc":"E2","single":122,"double":156,"lat":51.52813399999999,"lng":-0.06165119999999999},{"t":"Earl's Court / West Brompton (SW5)","c":2471,"pc":"SW5","single":194,"double":173,"lat":51.4925144,"lng":-0.1923088},{"t":"West Norwood (SE27)","c":2289,"pc":"SE27","single":93,"double":109,"lat":51.4282887,"lng":-0.102429},{"t":"Ealing (W5)","c":2706,"pc":"W5","single":133,"double":144,"lat":51.5093689,"lng":-0.299988},{"t":"Brockley (SE4)","c":2292,"pc":"SE4","single":97,"double":120,"lat":51.4598337,"lng":-0.0322047},{"t":"Mortlake (SW14)","c":2461,"pc":"SW14","single":-1,"double":155,"lat":51.4647869,"lng":-0.2671196},{"t":"Stockwell (SW9)","c":2475,"pc":"SW9","single":99,"double":146,"lat":51.4702875,"lng":-0.1143209},{"t":"Shepherds Bush (W12)","c":2700,"pc":"W12","single":121,"double":153,"lat":51.5095281,"lng":-0.229236},{"t":"Catford (SE6)","c":2294,"pc":"SE6","single":92,"double":109,"lat":51.4362068,"lng":-0.0175487},{"t":"Stratford / West Ham (E15)","c":750,"pc":"E15","single":102,"double":132,"lat":51.541295,"lng":-0.0058709},{"t":"West End / Soho (W1)","c":2697,"pc":"W1","single":171,"double":224,"lat":51.515997,"lng":-0.139478},{"t":"Balham (SW12)","c":2459,"pc":"SW12","single":-1,"double":159,"lat":51.4439889,"lng":-0.1494105},{"t":"Wood Green (N22)","c":1651,"pc":"N22","single":88,"double":122,"lat":51.6017398,"lng":-0.1148607},{"t":"Hornsey / Crouch End (N8)","c":1657,"pc":"N8","single":120,"double":129,"lat":51.5833118,"lng":-0.1236257},{"t":"Walworth (SE17)","c":2278,"pc":"SE17","single":104,"double":134,"lat":51.4873809,"lng":-0.09237150000000001},{"t":"Eltham (SE9)","c":2297,"pc":"SE9","single":86,"double":99,"lat":51.4414439,"lng":0.05853159999999999},{"t":"Westminster / Belgravia / Pimlico (SW1)","c":2456,"pc":"SW1","single":149,"double":205,"lat":51.49372,"lng":-0.125},{"t":"Dulwich (SE22)","c":2284,"pc":"SE22","single":114,"double":130,"lat":51.4545635,"lng":-0.0732101},{"t":"Peckham (SE15)","c":2276,"pc":"SE15","single":100,"double":129,"lat":51.4703269,"lng":-0.0615237},{"t":"Chingford (E4)","c":756,"pc":"E4","single":84,"double":107,"lat":51.6307499,"lng":-0.0117803},{"t":"South Woodford (E18)","c":753,"pc":"E18","single":-1,"double":130,"lat":51.5912671,"lng":0.0264721},{"t":"Fulham (SW6)","c":2472,"pc":"SW6","single":120,"double":195,"lat":51.4754218,"lng":-0.2024825},{"t":"Putney (SW15)","c":2462,"pc":"SW15","single":99,"double":148,"lat":51.45696599999999,"lng":-0.2405677},{"t":"Hendon (NW4)","c":1831,"pc":"NW4","single":109,"double":129,"lat":51.58315229999999,"lng":-0.2298416},{"t":"Blackheath (SE3)","c":2291,"pc":"SE3","single":95,"double":124,"lat":51.46771529999999,"lng":0.0175685},{"t":"Lee (SE12)","c":2273,"pc":"SE12","single":94,"double":110,"lat":51.446708,"lng":0.0175553},{"t":"Chiswick (W4)","c":2705,"pc":"W4","single":122,"double":167,"lat":51.4884335,"lng":-0.2644},{"t":"Canning Town / North Woolwich / Docks (E16)","c":751,"pc":"E16","single":89,"double":127,"lat":51.5097478,"lng":0.0293285},{"t":"Stoke Newington (N16)","c":1644,"pc":"N16","single":120,"double":146,"lat":51.5623078,"lng":-0.0764353},{"t":"Wimbledon / Merton / Collier's Wood (SW19)","c":2466,"pc":"SW19","single":97,"double":138,"lat":51.4255297,"lng":-0.2050566},{"t":"Angel / Islington / Canonbury (N1)","c":1637,"pc":"N1","single":143,"double":182,"lat":51.5412621,"lng":-0.08813879999999999},{"t":"East Finchley (N2)","c":1648,"pc":"N2","single":102,"double":135,"lat":51.5937773,"lng":-0.1708687},{"t":"Maida Vale / Kilburn (NW6)","c":1833,"pc":"NW6","single":118,"double":163,"lat":51.5437594,"lng":-0.1970833},{"t":"South Lambeth (SW8)","c":2474,"pc":"SW8","single":121,"double":149,"lat":51.47551540000001,"lng":-0.1378307},{"t":"Battersea (SW11)","c":2458,"pc":"SW11","single":125,"double":155,"lat":51.4675936,"lng":-0.1700978}];
+	
+	var colorLevel;
+	var rangeMin = 80.0;
+	var rangeMax = 150.0;
+	var range = rangeMax - rangeMin;
+	var rangeBrackets = 15;
+	var rangeStart = 200;
+	var rangeGap = 10;
+	for(var i=0; i < data.length; ++i) {
+		var lat = data[i].lat
+		var lng = data[i].lng
+		colorLevel = ((data[i].single - rangeMin)/range);
+		if(colorLevel <0) { colorLevel=0}
+		colorLevel=rangeStart + rangeGap*Math.round(colorLevel*rangeBrackets);
+		console.log(colorLevel);
+		var image = "img/house"+colorLevel+".png"
+		var position = new google.maps.LatLng(lat,lng);
+		var title = data[i].t + "\nsingle: " + data[i].single + " double: " + data[i].double; 
+		var marker = new google.maps.Marker({map:map,position:position,draggable:false,title:title,icon:image});
+		attachListener(marker,data[i].c);
+	}
+	
+  }
+  
+  function attachListener(marker,code) {
+	google.maps.event.addListener(marker, 'click', function(event) {
+		var ptr = window.open("http://www.spareroom.co.uk/flatshare/where_to_live_wizard.pl?action=piechart&postcode_id="+code+"&to=area_info_popup",'details','width=400,height=400');
+		ptr.focus();
+	});
+  }
+
+</script>
+</head>
+<body onload="initialize()">
+  <div id="map_canvas" style="width:100%; height:100%"></div>
+</body>
+</html>
