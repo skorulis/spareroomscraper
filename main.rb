@@ -6,6 +6,8 @@ require 'net/http'
 require 'json'
 
 @allInfo = [];
+@minPrice = 10000;
+@maxPrice = 0;
 
 class Array
   def shuffle
@@ -123,8 +125,18 @@ def extractData(code)
 		locInfo = extractLocInfo(locData["results"])
 		result.lat = locInfo.lat
 		result.lng = locInfo.lng
+		if result.double.length == 0
+			result.double = "0";
+		end
 		json = '{"t":"'+title+'","c":'+code+',"pc":"'+result.postcode+'","single":'+result.single+',"double":'+result.double+',"lat":'+locInfo.lat.to_s+',"lng":'+locInfo.lng.to_s+'}';
 		@allInfo.push(json);
+		valTemp = Integer(result.single);
+		if valTemp > 0
+			@minPrice = [@minPrice,valTemp].min;
+			@maxPrice = [@maxPrice,valTemp].max;
+		end
+		#puts @minPrice;
+		#puts @maxPrice;
 	end
 end
 
@@ -162,12 +174,12 @@ end
 
 def dumpResults
 		file = File.new("result.json", "wb");
-		ret = "var data = [";
+		ret = 'var data = {"min":'+@minPrice.to_s(10)+',"max":'+@maxPrice.to_s(10)+ ',"items":[';
 		for s in @allInfo
 			ret+= s + ","
 		end
 		ret = ret[0,ret.length-1]
-		ret+="];";
+		ret+=']};';
 		
 		file.write(ret)
 end

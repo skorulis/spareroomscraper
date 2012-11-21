@@ -1,0 +1,1 @@
+This project comprises of 2 parts. First the ruby script scrapes the spareroom website to generate JSON data. This is then put into the HTML component which renders the map
